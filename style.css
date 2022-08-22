@@ -1,0 +1,260 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+}
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: url(images/body.jpg) center / cover;
+}
+.box {
+    perspective: 1000px;
+}
+.box .cube {
+    transform-style: preserve-3d;
+    width: 500px;
+    height: 500px;
+    position: relative;
+    transition: 1s;
+    top: 0;
+}
+.wall {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+.wall1 {
+    transform: translateZ(250px);
+    background: url(images/will1Back.jpg) center / cover;
+    clip-path: polygon(37.5% 100%, 0 100%, 0 0, 100% 0, 100% 100%, 62.5% 100%, 62.3% 50.5%, 37.5% 50.5%);
+}
+.wall1 .x1 {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    position: absolute;
+    right: 0;
+}
+.wall1 .x2 {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    position: absolute;
+    left: 0;
+}
+.wall1 .centerImage {
+    width: 170px;
+    height: 170px;
+    top: 20px;
+    position: absolute;
+    left: 50%;
+    object-fit: contain;
+    transform: translateX(-50%);
+}
+.wall1 .titleBox {
+    width: 330px;
+    height: 50px;
+    position: relative;
+    left: 50%;
+    top: 190px;
+    transform: translateX(-50%);
+    /* background-color: aqua; */
+    display: flex;
+    justify-content: center;
+}
+.wall1 .titleBox .title {
+    /* color: #fff; */
+    background: linear-gradient(to right, red 29.5%, blue 34.5% 62%, orange 67% 100%);
+    background-position-x: 202px;
+    -webkit-background-clip: text;
+    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.5); 
+    color: transparent;
+    font: 2.5rem 'Quicksand', sans-serif;
+    overflow: hidden;
+    animation: gradient 2s 0.5s ease-in-out forwards;
+}
+@keyframes gradient {
+    100% {
+        background-position-x: 0;
+    }
+}
+.door {
+    width: 200px;
+    left: 50%;
+    bottom: 1px;
+    height: 247px;
+    transform: translateX(-50%) translateZ(255px);
+    z-index: 10;
+    position: absolute;
+    perspective: 1500px;
+}
+.door .ram {
+    cursor: pointer;
+    width: 126px;
+    height: 250px;
+    left: 37px;
+    position: absolute;
+    z-index: 1;
+}
+.door .open {
+    width: 130px;
+    height: 250px;
+    left: 35px;
+    top: -2px;
+    transform-origin: left;
+    transform-style: preserve-3d;
+    position: absolute;
+    transition: 1.5s ease-in-out;
+}
+.wall2 {
+    transform: rotateY(90deg) translateZ(-250px);
+    background: url(images/walls.jpg) center / cover;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.wall2 img {
+    width: 130px;
+    height: 100px;
+    object-fit: cover;
+    margin: 0.7em;
+    cursor: pointer;
+    filter: brightness(0.8);
+    box-shadow: 0 0 20px #000;
+}
+.wall3 {
+    transform: rotateY(90deg) translateZ(250px);
+    background: url(images/walls.jpg) center / cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wall3 .tv {
+    width: 350px;
+    height: 250px;
+    border-top: 4px solid #333;
+    border-right: 4px solid #333;
+    border-left: 4px solid #333;
+    border-bottom: 8px solid #111;
+    position: relative;
+    box-shadow: 0 0 20px #000;
+}
+.wall3 .tv .onoff {
+    width: 5px;
+    height: 5px;
+    background-color: green;
+    position: absolute;
+    right: 5px;
+    cursor: pointer;
+    bottom: -6px;
+    border-radius: 50%;
+}
+.wall3 .tv video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: rotateY(180deg);
+}
+.wall4 {
+    transform: translateZ(-250px);
+    background: url(images/walls.jpg) center / cover;
+}
+.wall4 .picture {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+.wall4 .picture img {
+    transition: 0.5s;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    box-shadow: 0 0 20px #000;
+    user-select: none;
+    cursor: pointer;
+}
+.wall4 .picture img:hover {
+    filter: brightness(1.15);
+    transform: scale(1.05);
+}
+.wall4 .description {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    margin-top: 10px;
+    text-align: center;
+}
+.wall4 .description .title {
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font: 1rem 'Quicksand', sans-serif;
+    border-bottom: 1px solid rgb(255, 179, 0);
+}
+.wall4 .description .desc {
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font: 0.8rem 'Quicksand', sans-serif;
+}
+.wall4 .description .title::selection, .wall4 .description .desc::selection {
+    color: #000;
+    background: #fff;
+}
+.wall4 .description .setLanguage {
+    position: absolute;
+    left: 5px;
+    bottom: 5px;
+}
+.wall4 .description .setLanguage > span {
+    color: red;
+    user-select: none;
+    cursor: pointer;
+    margin-right: 2px;
+    font: 1em cursive;
+}
+.wall5 {
+    transform: rotateX(90deg) translateZ(250px);
+}
+.wall5 img {
+    width: 500px;
+    height: 700px;
+    object-fit: cover;
+}
+.wall6 {
+    transform: rotateX(90deg) translateZ(-250px);
+    background-color: blue;
+}
+.wall6 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.wall7 {
+    position: absolute;
+    transform: translateZ(249px);
+    background: url(images/walls.jpg) center / cover;
+    clip-path: polygon(37.5% 100%, 0 100%, 0 0, 100% 0, 100% 100%, 62.5% 100%, 62.3% 50.5%, 37.5% 50.5%);
+}
+.wall7 img {
+    width: 300px;
+    height: 200px;
+    object-fit: contain;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    filter: brightness(0.9);
+}
